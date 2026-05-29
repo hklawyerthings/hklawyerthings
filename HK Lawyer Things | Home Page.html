@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK Lawyer Things | From Student to Practitioner</title>
+    <style>
+        :root {
+            --bg-main: #0A0A0A;
+            --bg-card: #141414;
+            --bg-card-hover: #1C1C1E;
+            --primary-accent: #FFFFFF;
+            --secondary-accent: #90A4AE;
+            --gold: #D4AF37;
+            --border-color: #2C2C2E;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { color: var(--primary-accent); background-color: var(--bg-main); line-height: 1.6; }
+        nav { background-color: var(--bg-main); padding: 25px 10%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: 800; font-size: 1.3rem; color: var(--primary-accent); letter-spacing: 1px; cursor: pointer; text-decoration: none; }
+        .logo span { color: var(--gold); }
+        .nav-links a { text-decoration: none; color: var(--secondary-accent); margin-left: 30px; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; cursor: pointer; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-accent); }
+        .nav-links .btn-nav { background-color: var(--primary-accent); color: var(--bg-main); padding: 8px 18px; border-radius: 4px; font-weight: 600; }
+        .nav-links .btn-nav:hover { background-color: var(--gold); color: var(--bg-main); }
+        .hero { background: radial-gradient(circle at center, #1C1C1E 0%, #0A0A0A 100%); padding: 100px 10% 60px 10%; text-align: center; }
+        .hero-content { max-width: 850px; margin: 0 auto; }
+        .hero h1 { font-size: 3rem; font-weight: 900; line-height: 1.2; margin-bottom: 25px; letter-spacing: -0.5px; }
+        .hero p { font-size: 1.25rem; color: var(--secondary-accent); margin-bottom: 40px; font-weight: 300; }
+        .cta-buttons a { text-decoration: none; padding: 14px 32px; border-radius: 4px; font-weight: 600; display: inline-block; margin: 10px; transition: all 0.2s; cursor: pointer; }
+        .btn-primary { background-color: var(--gold); color: var(--bg-main); }
+        .btn-primary:hover { background-color: #E6C655; transform: translateY(-1px); }
+        .btn-secondary { border: 2px solid var(--border-color); color: var(--primary-accent); }
+        .btn-secondary:hover { background-color: rgba(255,255,255,0.05); border-color: var(--primary-accent); }
+        .about-section { padding: 60px 10% 80px 10%; background-color: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .about-container { max-width: 1000px; margin: 0 auto; }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 35px; }
+        .about-stat { background: var(--bg-main); padding: 22px; border-radius: 6px; border-left: 3px solid var(--gold); }
+        .about-stat h4 { color: var(--gold); font-size: 1.1rem; margin-bottom: 5px; }
+        .about-stat p { color: var(--primary-accent); font-size: 0.95rem; }
+        .about-mission { text-align: center; margin-top: 40px; font-size: 1.1rem; color: var(--secondary-accent); font-style: italic; }
+        .section { padding: 100px 10% 60px 10%; }
+        .section-title { text-align: center; font-size: 2.2rem; font-weight: 800; color: var(--primary-accent); margin-bottom: 60px; letter-spacing: 0.5px; }
+        .section-title::after { content: ''; display: block; width: 40px; height: 2px; background-color: var(--gold); margin: 20px auto 0 auto; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; max-width: 1200px; margin: 0 auto; }
+        .card { background-color: var(--bg-card); border-radius: 6px; padding: 40px 35px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; position: relative; transition: transform 0.2s, background-color 0.2s; }
+        .card:hover { transform: translateY(-4px); background-color: var(--bg-card-hover); border-color: rgba(255,255,255,0.2); }
+        .badge { position: absolute; top: -12px; right: 25px; background-color: var(--gold); color: var(--bg-main); font-size: 0.75rem; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; }
+        .card-title { font-size: 1.4rem; font-weight: 700; color: var(--primary-accent); margin-bottom: 5px; }
+        .card-subtitle { font-size: 0.85rem; color: var(--secondary-accent); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-price { font-size: 1.8rem; font-weight: 800; color: var(--gold); margin-bottom: 20px; }
+        .card-features { list-style: none; margin-bottom: 35px; font-size: 0.9rem; color: var(--primary-accent); }
+        .card-features li { margin-bottom: 12px; position: relative; padding-left: 22px; }
+        .card-features li::before { content: "•"; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+        .btn-card { display: block; text-align: center; text-decoration: none; background-color: var(--primary-accent); color: var(--bg-main); padding: 12px; border-radius: 4px; font-weight: 600; transition: background-color 0.2s; }
+        .btn-card:hover { background-color: var(--gold); }
+        .logistics-remark { max-width: 1200px; margin: 50px auto 0 auto; background: linear-gradient(90deg, #141414 0%, #1C1C1E 100%); border: 1px solid var(--border-color); padding: 25px; border-radius: 6px; text-align: center; }
+        .logistics-remark p { font-size: 1.05rem; color: var(--primary-accent); letter-spacing: 0.5px; }
+        .logistics-remark strong { color: var(--gold); }
+        .b2b-section { background-color: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .b2b-container { max-width: 900px; margin: 0 auto; text-align: center; }
+        .b2b-container p { font-size: 1.15rem; color: var(--secondary-accent); margin-bottom: 45px; }
+        .contact-details { display: flex; justify-content: center; gap: 40px; margin-top: 35px; flex-wrap: wrap; }
+        .contact-item { font-size: 1.1rem; color: var(--primary-accent); }
+        .contact-item a { color: var(--gold); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .contact-item a:hover { color: var(--primary-accent); }
+        footer { background-color: var(--bg-main); color: #555555; padding: 50px 10%; text-align: center; font-size: 0.85rem; }
+        footer a { color: var(--secondary-accent); text-decoration: none; }
+        footer a:hover { color: var(--primary-accent); }
+        
+        /* Directory List Style for Blogs Tab Home */
+        .blog-directory-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .directory-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; padding: 30px; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.2s; }
+        .directory-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+        .dir-meta { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin-bottom: 10px; }
+        .dir-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 15px; line-height: 1.4; color: var(--primary-accent); }
+        .dir-link { font-size: 0.9rem; color: var(--secondary-accent); font-weight: 600; display: flex; align-items: center; gap: 5px; margin-top: auto; }
+        .directory-card:hover .dir-link { color: var(--primary-accent); }
+        .page-view { display: none; }
+        .page-view.active-view { display: block; }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } nav { flex-direction: column; gap: 20px; } .nav-links a { margin: 5px 12px; } .contact-details { flex-direction: column; gap: 15px; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">HK LAWYER <span>THINGS</span></a>
+        <div class="nav-links">
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#products">Resources</a>
+            <a id="blog-nav-link" onclick="toggleBlogsTab()">Blogs</a>
+            <a href="index.html#firms">For Law Firms</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://www.instagram.com/hklawyerthings/" target="_blank" class="btn-nav">Follow on IG</a>
+        </div>
+    </nav>
+
+    <!-- CORE LANDING PAGE CONTENT VIEW -->
+    <div id="landing-view" class="page-view active-view">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Bridge the Gap Between Law School and Private Practice</h1>
+                <p>Practical, market-proven digital resources and mindset strategies designed to help law students and incoming trainees thrive in elite law firms.</p>
+                <div class="cta-buttons">
+                    <a href="#products" class="btn-primary">Browse Toolkits &amp; Guides</a>
+                    <a onclick="toggleBlogsTab()" class="btn-secondary">Read Insights</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="about-section" id="about">
+            <div class="about-container">
+                <h2 class="section-title" style="margin-bottom: 20px;">The Mind Behind The Method</h2>
+                <p style="text-align: center; color: var(--secondary-accent); max-width: 750px; margin: 0 auto 30px auto;">Securing a training contract at an international firm isn't about having a flawless academic record—it's about strategy, execution, and resilience. I know because I've been in your shoes.</p>
+                <div class="about-grid">
+                    <div class="about-stat"><h4>Top-Tier Track Record</h4><p>Current Trainee Solicitor at a premium, top-tier US law firm.</p></div>
+                    <div class="about-stat"><h4>Triple-Crown Offers</h4><p>Secured highly competitive Vacation Scheme offers from a top-tier US firm, a Magic Circle firm, and a Silver Circle firm.</p></div>
+                    <div class="about-stat"><h4>Grass-Roots &amp; First-Gen</h4><p>Proudly built my career from a grass-roots background as a first-generation university student and lawyer. Breaking barriers is part of the blueprint.</p></div>
+                    <div class="about-stat"><h4>You Only Need One "Yes"</h4><p>I made 60+ applications and was rejected by 50+ of them. I failed my way to success and deeply understand exactly how to fix a broken recruitment strategy.</p></div>
+                    <div class="about-stat"><h4>No Good Grades, No Problem</h4><p>Proud HKU Law Alumnus earning a six-figure salary without holding first-class honours. Your academic standings do not define your career ceiling.</p></div>
+                    <div class="about-stat"><h4>50+ Students Helped</h4><p>Our practical toolkits and guides have successfully empowered over 50+ ambitious future legal professionals through the years.</p></div>
+                </div>
+                <div class="about-mission">Bringing you actionable recruitment blueprints • Revealing real-world firm cultures • Navigating long-term legal career planning</div>
+            </div>
+        </section>
+
+        <section class="section" id="products">
+            <h2 class="section-title">Digital Career Resources</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3 class="card-title">Application Toolkit</h3>
+                        <div class="card-subtitle">8-Page Intensive Framework</div>
+                        <div class="card-price">HK$480</div>
+                        <ul class="card-features">
+                            <li><strong>No-Experience Blueprint:</strong> Complete Cover Letter template tailored for Vacation Scheme applications without prior legal internships.</li>
+                            <li><strong>Experienced Blueprint:</strong> High-impact Cover Letter template optimized for applicants leveraging previous legal/vacation scheme experience.</li>
+                            <li><strong>The Answer Bank:</strong> Curated collection of common firm application questions paired with comprehensive, winning answer structures.</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.instagram.com/hklawyerthings/" target="_blank" class="btn-card">Purchase via Instagram DM</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <h3 class="card-title">Guide to Training Contract</h3>
+                        <div class="card-subtitle">The Complete E-Book Blueprint</div>
+                        <div class="card-price">HK$780</div>
+                        <ul class="card-features" style="font-size: 0.85rem;">
+                            <li><strong>Initial Screening Mastery:</strong> CV experience building strategies, alongside step-by-step drafting rules for outstanding CVs and Cover Letters.</li>
+                            <li><strong>Assessment &amp; Interview Prep:</strong> Passing online tests, handling complex Case Studies, tackling technical questions, and building commercial awareness.</li>
+                            <li><strong>Vacation Scheme Conversion:</strong> The mindset, handling overtime, and standing out to ensure you convert your scheme into a solid TC offer.</li>
+                            <li><strong>Strategic Recovery:</strong> Handling rejection, explaining bad grades or past empty cycles, and pivoting in final year attempts.</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.instagram.com/hklawyerthings/" target="_blank" class="btn-card">Purchase via Instagram DM</a>
+                </div>
+
+                <div class="card" style="border: 1px solid var(--gold);">
+                    <span class="badge">Pre-Order Offer</span>
+                    <div>
+                        <h3 class="card-title">From Student to Practitioner</h3>
+                        <div class="card-subtitle">Elite Mindset Masterclass</div>
+                        <div class="card-price">HK$1,880</div>
+                        <ul class="card-features">
+                            <li>1-Hour Intensive Video Masterclass</li>
+                            <li>Workload &amp; dynamic priority management</li>
+                            <li>Strategies for "managing up" to partners</li>
+                            <li>Exclusive operational checklist &amp; toolkit</li>
+                        </ul>
+                    </div>
+                    <a href="https://www.instagram.com/hklawyerthings/" target="_blank" class="btn-card" style="background-color: var(--gold); color: var(--bg-main);">Secure Early Access</a>
+                </div>
+            </div>
+            <div class="logistics-remark"><p>📋 <strong>Seamless Logistics:</strong> Simply <strong>DM us on Instagram</strong> to place your order → <strong>Pay securely</strong> via your preferred transfer option → <strong>Receive your digital products</strong> directly in your inbox within 24 hours.</p></div>
+        </section>
+    </div>
+
+    <!-- DEDICATED SEPARATE TAB VIEW FOR BLOG DIRECTORY -->
+    <div id="blog-tab-view" class="page-view">
+        <section class="section">
+            <h2 class="section-title">Firm Insights &amp; Strategic Manuals</h2>
+            <div class="blog-directory-grid">
+                <!-- Blog 1 -->
+                <a href="blog-cravath-salary.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Market Intel &bull; Salary Guides</div>
+                        <div class="dir-title">The Big Law Salary Reveal: Can a Newly Qualified (NQ) Lawyer Really Make HK$145,000/Month?</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 2 -->
+                <a href="blog-practice-areas.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Career Strategy &bull; Rotation Advice</div>
+                        <div class="dir-title">How to Choose a Practice Area in Big Law: 4 Hidden Factors That Will Define Your Career Ceiling</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 3 -->
+                <a href="blog-coffee-chats.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Networking &bull; Vacation Scheme Tips</div>
+                        <div class="dir-title">Revealing The 4 Unwritten Rules of Coffee Chats</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 4 -->
+                <a href="blog-tc-lessons.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Personal Reflections &bull; Realities of Practice</div>
+                        <div class="dir-title">5 Things My Training Contract Gave Me: What I Gained Beyond My Law License</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 5 -->
+                <a href="blog-trainee-vs-intern.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Trainee Life &bull; Transitions</div>
+                        <div class="dir-title">Trainee vs. Intern: What is the Biggest Difference in Big Law?</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 6 -->
+                <a href="blog-nq-career-paths.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Career Progression &bull; Options</div>
+                        <div class="dir-title">Where to Go After Qualification? A Complete Guide to the 4 Big NQ Career Paths</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 7 -->
+                <a href="blog-convert-vac-scheme.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Vacation Scheme &bull; Conversions</div>
+                        <div class="dir-title">From Vacation Scheme to Training Contract: How to Stand Out and Convert Your Internship</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 8 -->
+                <a href="blog-intern-mistakes.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Intern Blueprints &bull; Pitfalls</div>
+                        <div class="dir-title">The Big Law Survival Guide: The 5 Most Common Mistakes Law Interns Make</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 9 -->
+                <a href="blog-freshmen-internships.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Law Freshmen &bull; Recruitment</div>
+                        <div class="dir-title">Law Freshmen Guide: 7 Entry-Level Legal Internships to Jumpstart Your Career</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+                <!-- Blog 10 -->
+                <a href="blog-tc-survival.html" class="directory-card">
+                    <div>
+                        <div class="dir-meta">Workplace Boundaries &bull; Longevity</div>
+                        <div class="dir-title">3 Things I Wish I Knew Before I Started My Big Law Training Contract</div>
+                    </div>
+                    <div class="dir-link">Read Strategy Guide &rarr;</div>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- GLOBAL SECTIONS -->
+    <section class="section b2b-section" id="firms">
+        <div class="b2b-container">
+            <h2 class="section-title">For Local Law Firms</h2>
+            <p>Accelerate your incoming intake's commercial utility and minimize supervisory burdens. We offer a 1-hour interactive professional onboarding workshop titled <strong>"The Trainee Mindset"</strong> to seamlessly integrate your upcoming cohort into active private practice workflows.</p>
+            <a href="https://www.instagram.com/hklawyerthings/" target="_blank" class="btn-card" style="display:inline-block; padding:14px 40px; background-color: transparent; border: 1px solid var(--primary-accent); color: var(--primary-accent);">Request a Complimentary 1-Hour Trial Session</a>
+        </div>
+    </section>
+
+    <section class="section" id="contact" style="padding: 80px 10%;">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="b2b-container">
+            <p style="margin-bottom: 20px;">Whether you are an aspiring lawyer with questions about our guides, or an elite law firm looking to schedule a trainee intake workshop, we would love to hear from you.</p>
+            <div class="contact-details">
+                <div class="contact-item">📱 Instagram: <a href="https://www.instagram.com/hklawyerthings/" target="_blank">@hklawyerthings</a></div>
+                <div class="contact-item">✉️ Email: <a href="mailto:hklawyerthings@gmail.com">hklawyerthings@gmail.com</a></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 HK Lawyer Things. All rights reserved. Built for future practitioners.</p>
+    </footer>
+
+    <script>
+        function toggleBlogsTab() {
+            document.getElementById('landing-view').classList.remove('active-view');
+            document.getElementById('blog-tab-view').classList.add('active-view');
+            document.getElementById('blog-nav-link').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // Handle explicit anchors from incoming internal routes cleanly
+        window.addEventListener('DOMContentLoaded', () => {
+            if(window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const element = document.getElementById(targetId);
+                if(element) setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 150);
+            }
+        });
+    </script>
+</body>
+</html>
