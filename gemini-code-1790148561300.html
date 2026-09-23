@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HK Lawyer Things | Helping You Build A Legal Career You Love</title>
+  <!-- Google Fonts for professional typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS RESET & VARIABLES */
+    :root {
+      --primary: #121212;          /* Rich Dark Black */
+      --primary-light: #1E1E1E;    /* Dark Charcoal / Dark Grey */
+      --accent: #EAB308;           /* Vibrant Yellow Accent */
+      --accent-hover: #CA8A04;     /* Slightly Darker Yellow for Hover */
+      --accent-light: #FEF08A;     /* Soft Yellow Tint */
+      --text-dark: #121212;
+      --text-muted: #64748B;
+      --bg-light: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --border: #E2E8F0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background-color: #FFFFFF;
+      line-height: 1.6;
+    }
+
+    /* CONTAINER & UTILITIES */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #121212;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #FFFFFF;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--accent);
+      color: #121212;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #121212;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* HEADER & NAVIGATION */
+    header {
+      background-color: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* MOBILE NAVIGATION TOGGLE */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 25px;
+      height: 2px;
+      background-color: #FFFFFF;
+      transition: 0.3s;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #FFFFFF;
+      padding: 5rem 0;
+      text-align: center;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94A3B8;
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* SECTIONS COMMON */
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2.1rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      background-color: var(--bg-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      padding: 1.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary-light);
+      transition: border-color 0.2s;
+    }
+
+    .about-card:hover {
+      border-left-color: var(--accent);
+    }
+
+    .about-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .about-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .mission-box {
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+      border-top: 3px solid var(--accent);
+    }
+
+    .mission-box h3 {
+      font-family: var(--font-heading);
+      margin-bottom: 0.75rem;
+      color: #F8FAFC;
+    }
+
+    .mission-tags {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* PRODUCTS SECTION */
+    .product-notice {
+      background-color: #FEFCE8;
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+      color: #713F12;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .product-card.bestseller {
+      border: 2px solid var(--accent);
+    }
+
+    .product-header {
+      margin-bottom: 1rem;
+    }
+
+    .product-title {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .product-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .product-body h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-body p {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .product-addon {
+      background: #FEFCE8;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: #713F12;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      border: 1px dashed var(--accent);
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background-color: var(--bg-light);
+    }
+
+    .contact-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--accent);
+    }
+
+    .contact-wrapper p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      background-color: var(--bg-light);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .contact-item:hover {
+      background-color: var(--primary);
+      color: var(--accent);
+      border-color: var(--primary);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--primary);
+      color: #94A3B8;
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--primary-light);
+    }
+
+    /* RESPONSIVE DESIGN (MOBILE ADAPTATIONS) */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid var(--primary-light);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-wrapper {
+        padding: 1.75rem;
+      }
+
+      .contact-methods {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-item {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAVIGATION -->
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">HK LAWYER <span>THINGS</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <h1>Helping You Build A Legal Career You Love</h1>
+      <p>Practical, market-proven digital tools designed to help you thrive in the legal industry.</p>
+      <div class="hero-cta">
+        <a href="#products" class="btn btn-primary">Get A Training Contract</a>
+        <a href="#products" class="btn btn-secondary">Discuss Your Career</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT ME SECTION -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">I know I can help because I’ve been in your shoes.</p>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <h3><span>🏛️</span> Top-Tier Track Record</h3>
+          <p>Ex-Trainee Solicitor at a top-tier US law firm.</p>
+        </div>
+
+        <div class="about-card">
+          <h3><span>🏆</span> Triple-Crown Offers</h3>
+          <p>Secured highly competitive Vacation Scheme offers from a top-tier US firm, a Magic Circle firm, and a Silver Circle firm.</p>
+        </div>
+
+        <div class="about-card">
+          <h3><span>🌱</span> Grass-Roots & First-Gen</h3>
+          <p>Proudly built my career from a grass-roots background as a first-generation university student and lawyer. Breaking barriers is part of the blueprint.</p>
+        </div>
+
+        <div class="about-card">
+          <h3><span>🎯</span> You Only Need One "Yes"</h3>
+          <p>I made 60+ applications and was rejected by 50+ of them. I failed my way to success and deeply understand exactly how to fix a broken recruitment strategy.</p>
+        </div>
+
+        <div class="about-card">
+          <h3><span>🎓</span> No Good Grades, No Problem</h3>
+          <p>Proud HKU Law alumnus earning a top 10% salary without holding first-class honours. Your academic standings do not define your career ceiling.</p>
+        </div>
+
+        <div class="about-card">
+          <h3><span>🚀</span> 50+ Students Helped</h3>
+          <p>Our practical toolkits and guides have successfully empowered over 50+ ambitious future legal professionals through the years.</p>
+        </div>
+      </div>
+
+      <div class="mission-box">
+        <h3>Our Mission</h3>
+        <div class="mission-tags">
+          <span>• Actionable job hunting tips</span>
+          <span>• Real-world workplace culture reveals</span>
+          <span>• Long-term career planning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section id="products">
+    <div class="container">
+      <h2 class="section-title">Our Products</h2>
+      <p class="section-subtitle">Market-proven resources designed for immediate practical impact.</p>
+
+      <div class="product-notice">
+        📥 <strong>How to Order:</strong> DM via Instagram to place an order. Receive the product within 24 hours of payment via email.
+      </div>
+
+      <div class="products-grid">
+        
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div>
+            <div class="product-header">
+              <h3 class="product-title">1. Translation Glossary Cheatsheet</h3>
+              <p class="product-subtitle">4-Page English-vs-Chinese Glossary List</p>
+            </div>
+            <div class="product-price">HK$180</div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>Buy if you are going into a vacation scheme with English-Chinese translation test(s). Save time by studying only these 4 pages, then focus your energy on other work tasks.</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div>
+            <div class="product-header">
+              <h3 class="product-title">2. Email Best Practices Cheatsheet</h3>
+              <p class="product-subtitle">4-Page Concise Templates</p>
+            </div>
+            <div class="product-price">HK$280</div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>Buy if you are going into a vacation scheme. Avoid the most common email mistakes by going through the 4-step checklist. Learn how to write in a way that makes people love and trust your work.</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div>
+            <div class="product-header">
+              <h3 class="product-title">3. 《到底法律系讀什麼？》電子書</h3>
+              <p class="product-subtitle">32頁中文電子書；簡介在香港就讀法律系的具體內容以及畢業後常見出路</p>
+            </div>
+            <div class="product-price">HK$320</div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>適合中學生 / 有意加入法律界人士，避免投放巨大時間及經濟成本後，才發現法律工作與預期中的不一樣</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <div>
+            <div class="product-header">
+              <h3 class="product-title">4. Application Toolkit</h3>
+              <p class="product-subtitle">8-Page Intensive Framework</p>
+            </div>
+            <div class="product-price">HK$480</div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>Buy if you are just starting to apply to international law firms. Especially useful if you haven’t been able to get past the initial screening stage. Follow these frameworks to write better cover letters and online application answers.</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+        <!-- Product 5 (Best Seller) -->
+        <div class="product-card bestseller">
+          <div>
+            <span class="badge">BEST SELLER!</span>
+            <div class="product-header">
+              <h3 class="product-title">5. Guide to Training Contract</h3>
+              <p class="product-subtitle">81-Page Comprehensive Blueprint to Secure I-Firm TC</p>
+            </div>
+            <div class="product-price">HK$780</div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>Buy if you want a training contract from an international law firm. Most actionable if you are going into your penultimate year or starting your application cycle, but also very useful for junior law students to plan ahead and understand more about the industry. Includes all you need to know (CV, cover letter, assessment, interviews, commercial awareness, mindsets, strategies, etc) to land a top-tier, high-income graduate role.</p>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <div>
+            <div class="product-header">
+              <h3 class="product-title">6. Training Contract Masterclass</h3>
+              <p class="product-subtitle">1-hour Pre-recorded Video Lecture</p>
+            </div>
+            <div class="product-price">HK$1,360</div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>Buy if you want a training contract from an international law firm. Most actionable if you are going into your penultimate year or starting your application cycle. Covers the most important parts of the Guide to Training Contract E-book, plus interview case study sample answer.</p>
+            </div>
+            <div class="product-addon">
+              🎉 <strong>Discounted Add-on:</strong> 20% off both items if bought together with the Guide to Training Contract E-book!
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+          <div>
+            <div class="product-header">
+              <h3 class="product-title">7. Personal Consultation</h3>
+              <p class="product-subtitle">1-on-1 live online consultation to discuss and redesign career plans</p>
+            </div>
+            <div class="product-price">HK$1,580 <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">/ 30 mins</span></div>
+            <div class="product-body">
+              <h4>Who Should Buy This:</h4>
+              <p>Buy if you are at a career crossroad unsure what next steps to take. Whether you need mock interviews or tailored application advice, this session is 100% tailor-made to your needs.</p>
+            </div>
+            <div class="product-addon">
+              🎉 <strong>Discounted Add-on:</strong> 50% off your first session (ie. only HK$790)! Extra HK$100 off if you have previously bought our products (proof required).
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Order via Instagram</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GET IN TOUCH / CONTACT SECTION -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="contact-wrapper">
+        <h2 class="section-title">Get In Touch</h2>
+        <p>Whether you are an aspiring lawyer with questions about our products, or a seasoned legal professional looking to redesign your career, we would love to hear from you.</p>
+
+        <div class="contact-methods">
+          <a href="https://instagram.com/hklawyerthings" target="_blank" rel="noopener" class="contact-item">
+            📱 Instagram: @hklawyerthings
+          </a>
+          <a href="mailto:hklawyerthings@gmail.com" class="contact-item">
+            ✉️ Email: hklawyerthings@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 HK Lawyer Things. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT FOR MOBILE NAVIGATION -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links on mobile
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
